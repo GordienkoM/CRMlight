@@ -6,10 +6,11 @@ use App\Entity\Event;
 use App\Form\EventType;
 use App\Repository\EventRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/event")
@@ -29,8 +30,9 @@ class EventController extends AbstractController
     /**
      * @Route("/new", name="event_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, ManagerRegistry $doctrine): Response
     {
+        $entityManager = $doctrine->getManager();
         $event = new Event();
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
@@ -61,8 +63,9 @@ class EventController extends AbstractController
     /**
      * @Route("/{id}/edit", name="event_edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Event $event, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Event $event, ManagerRegistry $doctrine): Response
     {
+        $entityManager = $doctrine->getManager();
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
 
@@ -81,8 +84,9 @@ class EventController extends AbstractController
     /**
      * @Route("/{id}", name="event_delete", methods={"POST"})
      */
-    public function delete(Request $request, Event $event, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, Event $event, ManagerRegistry $doctrine): Response
     {
+        $entityManager = $doctrine->getManager();
         if ($this->isCsrfTokenValid('delete'.$event->getId(), $request->request->get('_token'))) {
             $entityManager->remove($event);
             $entityManager->flush();
