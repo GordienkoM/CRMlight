@@ -1,16 +1,127 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
+    <!-- fullcalendar.io -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+    {% block stylesheets %}{% endblock %}
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.21/dist/css/uikit.min.css"/>
+
+    <!--font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+</head>
+<body>
+
+    <nav class="uk-navbar-container uk-padding-small" uk-navbar>
+
+        <a class="uk-navbar-item uk-logo uk-visible@s" href="{{ path('main') }}">
+            <img id="logo" src="{{ asset('assets/img/logo.png') }}" alt="logo">
+        </a>
+        <div class="uk-margin-left">
+            <div class="uk-text-large">CRM light</div>
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav uk-visible@m">
+                <li class="uk-navbar-item">
+                    <a href="{{ path('main') }}">Dashboard</a>
+                </li>
+                <li>
+                    <a href="">Evenements</a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li>
+                                <a href="{{ path('event_index') }}">Evenements</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('event_new') }}">Ajouter un evenement</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li> 
+                {# {% if is_granted("ROLE_ADMIN") %} #}
+                    <li class="uk-navbar-item">
+                        <a href="{{ path('main') }}">Admin</a>
+                    </li>
+                {# {% endif %} #}
+                {# {% if app.user %} #}
+                {# Bonjour, {{ app.user.name }}					 #}
+                <li class="uk-navbar-item">
+                    <a href="{{ path('app_logout') }}" class="uk-link-heading uk-padding-small">Déconnexion</a>
+                </li>
+                
+                {# {% else %} #}
+                    <li class="uk-navbar-item">
+                       <a href="{{ path('app_register') }}" class="uk-link-heading uk-padding-small">Inscription</a>
+                    </li>
+                    <li class="uk-navbar-item">
+                         <a href="{{ path('app_login') }}" class="uk-link-heading uk-padding-small">Connexion</a>
+                    </li>           
+                {# {% endif %}				 #}
+                <li>
+                    <a href="">Infos</a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li>
+                                <a href="{{ path('main') }}">Test</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('main') }}">Test</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>                   
+            </ul>
+        </div>
+        <a href="#" class="uk-navbar-toggle uk-hidden@m" uk-navbar-toggle-icon uk-toggle="target: #sidenav"></a>
+    </nav>
+    <div id="sidenav" uk-offcanvas="flip: true" class="uk-offcanvas">
+        <div class="uk-offcanvas-bar">
+            <ul class="uk-nav">
+                <li class="uk-navbar-item">
+                    <a href="{{ path('main') }}">Accuil</a>
+                </li>
+                <li class="uk-navbar-item">
+                    <a href="{{ path('event_index') }}">Evenements</a>
+                </li>
+                <li class="uk-navbar-item">
+                    <a href="{{ path('event_new') }}">Ajouter un evenement</a>
+                </li>
+                {# {% if is_granted("ROLE_ADMIN") %} #}
+                    <li class="uk-navbar-item">
+                        <a href="{{ path('main') }}">Admin</a>
+                    </li>
+                {# {% endif %}	 #}
+                    <li class="uk-navbar-item">
+                    <a href="{{ path('main') }}">Test</a>
+                </li>
+                <li class="uk-navbar-item">
+                    <a href="{{ path('main') }}">Test</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    {% set messageSuccess = app.flashes('success') %}
+    {% if messageSuccess %}
+        <p>{{ messageSuccess }}</p>
+    {% endif %}
+    <main class="uk-container uk-container-xlarge">
         {% block body %}{% endblock %}
+    </main>
+    <!-- fullcalendar.io -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.js" integrity="sha256-DBxkGZLxKsLKhz054qUpBqtotG00r9AELGpSigJujLg=" crossorigin="anonymous"></script>
+    
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.21/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.21/dist/js/uikit-icons.min.js"></script>
+    {% block javascripts %}{% endblock %}
 
-        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.js" integrity="sha256-DBxkGZLxKsLKhz054qUpBqtotG00r9AELGpSigJujLg=" crossorigin="anonymous"></script>
-        {% block javascripts %}{% endblock %}
-    </body>
+</body>
 </html>

@@ -1,0 +1,23 @@
+body{
+    min-height: 100vh; /* 100 % de l'auteur*/
+}
+
+#links-nav{
+	background-color: rgb(243, 240, 240)
+}
+
+#nav-admin{
+	background-color: rgb(202, 203, 212)
+}
+
+
+main{
+
+    background-color:rgb(244, 244, 248);
+}
+
+
+
+#logo{
+    height:85px;
+}
