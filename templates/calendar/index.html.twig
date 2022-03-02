@@ -29,9 +29,14 @@
                 center: 'title',
                 end: 'dayGridMonth,timeGridWeek'
             },
+            events: {{ data|raw }},
+            editable: true,
+            eventResizableFromStart: true
         })
         calendar.render()
     }
+
+    
 </script>
 
 {% endblock %}
