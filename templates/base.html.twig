@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
     {% block stylesheets %}{% endblock %}
 
+    <!-- FONTS: Open Sans et Alegreya SC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@400;700&family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> 
+
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.21/dist/css/uikit.min.css"/>
 
@@ -44,25 +49,27 @@
                         </ul>
                     </div>
                 </li> 
-                {# {% if is_granted("ROLE_ADMIN") %} #}
+                {% if is_granted("ROLE_ADMIN") %}
                     <li class="uk-navbar-item">
                         <a href="{{ path('main') }}">Admin</a>
                     </li>
-                {# {% endif %} #}
-                {# {% if app.user %} #}
-                {# Bonjour, {{ app.user.name }}					 #}
+                    <li class="uk-navbar-item">
+                       <a href="{{ path('app_register') }}" class="uk-link-heading uk-padding-small">Ajout de collaborateur</a>
+                    </li>
+                {% endif %}
+                {% if app.user %}
+                <li class="uk-navbar-item">
+                    <a href="{{ path('main') }}" class="uk-link-heading uk-padding-small">{{ app.user.email }}</a>
+                </li>                					
                 <li class="uk-navbar-item">
                     <a href="{{ path('app_logout') }}" class="uk-link-heading uk-padding-small">Déconnexion</a>
                 </li>
                 
-                {# {% else %} #}
-                    <li class="uk-navbar-item">
-                       <a href="{{ path('app_register') }}" class="uk-link-heading uk-padding-small">Inscription</a>
-                    </li>
+                {% else %}
                     <li class="uk-navbar-item">
                          <a href="{{ path('app_login') }}" class="uk-link-heading uk-padding-small">Connexion</a>
                     </li>           
-                {# {% endif %}				 #}
+                {% endif %}				
                 <li>
                     <a href="">Infos</a>
                     <div class="uk-navbar-dropdown">
@@ -92,12 +99,7 @@
                 <li class="uk-navbar-item">
                     <a href="{{ path('event_new') }}">Ajouter un evenement</a>
                 </li>
-                {# {% if is_granted("ROLE_ADMIN") %} #}
-                    <li class="uk-navbar-item">
-                        <a href="{{ path('main') }}">Admin</a>
-                    </li>
-                {# {% endif %}	 #}
-                    <li class="uk-navbar-item">
+                <li class="uk-navbar-item">
                     <a href="{{ path('main') }}">Test</a>
                 </li>
                 <li class="uk-navbar-item">
