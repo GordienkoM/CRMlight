@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -41,6 +43,45 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Team::class, mappedBy="users")
+     */
+    private $teams;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Event::class, mappedBy="owner", orphanRemoval=true)
+     */
+    private $events;
+
+    /**
+     * @ORM\OneToMany(targetEntity=EventParticipation::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $eventParticipations;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Company::class, mappedBy="creator")
+     */
+    private $companies;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Contact::class, mappedBy="creator")
+     */
+    private $contacts;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Contact::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $contact;
+
+    public function __construct()
+    {
+        $this->teams = new ArrayCollection();
+        $this->events = new ArrayCollection();
+        $this->eventParticipations = new ArrayCollection();
+        $this->companies = new ArrayCollection();
+        $this->contacts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -140,6 +181,175 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Team>
+     */
+    public function getTeams(): Collection
+    {
+        return $this->teams;
+    }
+
+    public function addTeam(Team $team): self
+    {
+        if (!$this->teams->contains($team)) {
+            $this->teams[] = $team;
+            $team->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTeam(Team $team): self
+    {
+        if ($this->teams->removeElement($team)) {
+            $team->removeUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Event>
+     */
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+
+    public function addEvent(Event $event): self
+    {
+        if (!$this->events->contains($event)) {
+            $this->events[] = $event;
+            $event->setOwner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(Event $event): self
+    {
+        if ($this->events->removeElement($event)) {
+            // set the owning side to null (unless already changed)
+            if ($event->getOwner() === $this) {
+                $event->setOwner(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, EventParticipation>
+     */
+    public function getEventParticipations(): Collection
+    {
+        return $this->eventParticipations;
+    }
+
+    public function addEventParticipation(EventParticipation $eventParticipation): self
+    {
+        if (!$this->eventParticipations->contains($eventParticipation)) {
+            $this->eventParticipations[] = $eventParticipation;
+            $eventParticipation->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventParticipation(EventParticipation $eventParticipation): self
+    {
+        if ($this->eventParticipations->removeElement($eventParticipation)) {
+            // set the owning side to null (unless already changed)
+            if ($eventParticipation->getUser() === $this) {
+                $eventParticipation->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Company>
+     */
+    public function getCompanies(): Collection
+    {
+        return $this->companies;
+    }
+
+    public function addCompany(Company $company): self
+    {
+        if (!$this->companies->contains($company)) {
+            $this->companies[] = $company;
+            $company->setCreator($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCompany(Company $company): self
+    {
+        if ($this->companies->removeElement($company)) {
+            // set the owning side to null (unless already changed)
+            if ($company->getCreator() === $this) {
+                $company->setCreator(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Contact>
+     */
+    public function getContacts(): Collection
+    {
+        return $this->contacts;
+    }
+
+    public function addContact(Contact $contact): self
+    {
+        if (!$this->contacts->contains($contact)) {
+            $this->contacts[] = $contact;
+            $contact->setCreator($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContact(Contact $contact): self
+    {
+        if ($this->contacts->removeElement($contact)) {
+            // set the owning side to null (unless already changed)
+            if ($contact->getCreator() === $this) {
+                $contact->setCreator(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getContact(): ?Contact
+    {
+        return $this->contact;
+    }
+
+    public function setContact(?Contact $contact): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($contact === null && $this->contact !== null) {
+            $this->contact->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($contact !== null && $contact->getUser() !== $this) {
+            $contact->setUser($this);
+        }
+
+        $this->contact = $contact;
 
         return $this;
     }
