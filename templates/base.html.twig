@@ -48,13 +48,30 @@
                             </li>
                         </ul>
                     </div>
+                </li>
+                <li>
+                    <a href="{{ path('contact_index') }}">Carnet de contact</a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li>
+                                <a href="{{ path('contact_index') }}">Voir</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('contact_new') }}">Ajouter un contact</a>
+                            </li>
+                        </ul>
+                    </div>
                 </li> 
                 {% if is_granted("ROLE_ADMIN") %}
-                    <li class="uk-navbar-item">
-                        <a href="{{ path('main') }}">Admin</a>
-                    </li>
-                    <li class="uk-navbar-item">
-                       <a href="{{ path('app_register') }}" class="uk-link-heading uk-padding-small">Ajout de collaborateur</a>
+                    <li>
+                        <a href="">Admin</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li>
+                                   <a href="{{ path('app_register') }}" class="uk-link-heading uk-padding-small">Ajout de collaborateur</a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                 {% endif %}
                 {% if app.user %}
@@ -69,20 +86,7 @@
                     <li class="uk-navbar-item">
                          <a href="{{ path('app_login') }}" class="uk-link-heading uk-padding-small">Connexion</a>
                     </li>           
-                {% endif %}				
-                <li>
-                    <a href="">Infos</a>
-                    <div class="uk-navbar-dropdown">
-                        <ul class="uk-nav uk-navbar-dropdown-nav">
-                            <li>
-                                <a href="{{ path('main') }}">Test</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('main') }}">Test</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>                   
+                {% endif %}				                   
             </ul>
         </div>
         <a href="#" class="uk-navbar-toggle uk-hidden@m" uk-navbar-toggle-icon uk-toggle="target: #sidenav"></a>

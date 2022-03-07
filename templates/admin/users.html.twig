@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contacts{% endblock %}
+
+{% block body %}
+	{# Insertion de navigation d'administration #}
+	{% embed "admin/index.html.twig" %}{% endembed %}
+    <h1>Carnet de contact</h1>
+
+    <table class='uk-table uk-table-hover uk-table-divider'>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Email de compts</th>
+                <th>Email de contact</th>
+                <th>Numero de téléphone</th>
+                <th>Archivé</th>
+                <th>La date de création</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.contact.lastname }} {{ user.contact.firstname }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.contact.email }}</td>
+                <td>{{ user.contact.phoneNumber }}</td>
+                <td>{{ user.contact.enable ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a class="uk-icon-link uk-margin-small-right" uk-icon="file-edit" href="{{ path('user_edit', {'id': user.id}) ) }}"></a> 
+					<a class="uk-icon-link" uk-icon="trash" href="{{ path('user_edit', {'id': user.id}) }}"></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Le cornet de contact est vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('contact_new') }}">Créer un contact</a>
+{% endblock %}
