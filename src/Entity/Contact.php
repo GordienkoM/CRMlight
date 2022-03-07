@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Entity;
-
 use App\Repository\ContactRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -85,6 +84,10 @@ class Contact
         $this->fields = new ArrayCollection();
         $this->categories = new ArrayCollection();
         $this->events = new ArrayCollection();
+
+        $this->enable = true;
+        $this->createdAt = new \DateTime();
+        $this->creator = app.user;
     }
 
     public function getId(): ?int

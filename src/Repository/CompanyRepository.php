@@ -19,6 +19,18 @@ class CompanyRepository extends ServiceEntityRepository
         parent::__construct($registry, Company::class);
     }
 
+
+    public function findLastContacts()
+    {
+        return $this->createQueryBuilder('c')
+            ->orderBy('c.created_at', 'DESC')
+            ->setMaxResults(20)
+            ->getQuery()
+            ->execute();
+        ;
+    }
+
+
     // /**
     //  * @return Company[] Returns an array of Company objects
     //  */

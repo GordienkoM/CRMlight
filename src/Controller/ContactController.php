@@ -18,8 +18,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ContactController extends AbstractController
 {
     /**
+     * Show the contact book page
+     * 
      * @Route("/", name="contact_index", methods={"GET"})
-     */
+     */ 
     public function index(ContactRepository $contactRepository): Response
     {
         $contacts = $contactRepository->findBy(

@@ -16,13 +16,10 @@ class ContactType extends AbstractType
             ->add('lastname')
             ->add('email')
             ->add('phone_number')
-            ->add('enable')
-            ->add('createdAt')
-            ->add('company')
-            ->add('categories')
-            ->add('creator')
-            ->add('events')
-            ->add('user')
+            // ->add('enable')
+            // ->add('createdAt')
+        //     ->add('company')
+        //     ->add('categories')
         ;
     }
 
