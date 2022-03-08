@@ -1,34 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Event index{% endblock %}
+{% block title %}Liste des événement{% endblock %}
 
 {% block body %}
-    <h1 class="uk-text-center uk-padding">Event index</h1>
+    <h1 class="uk-text-center uk-padding">Liste des événement</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Start</th>
-                <th>End</th>
+                <th>Titre</th>
+                <th>Début</th>
+                <th>Fin</th>
                 <th>Description</th>
-                <th>All_day</th>
-                <th>Background_color</th>
-                <th>Border_color</th>
-                <th>Text_color</th>
+                <th>Joiurnée complete</th>
+                <th>Couleur de fond</th>
+                <th>Couleur de bords</th>
+                <th>Couleur de texte</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for event in events %}
             <tr>
-                <td>{{ event.id }}</td>
                 <td>{{ event.title }}</td>
                 <td>{{ event.start ? event.start|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ event.end ? event.end|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ event.description }}</td>
-                <td>{{ event.allDay ? 'Yes' : 'No' }}</td>
+                <td>{{ event.allDay ? 'Oui' : 'Non' }}</td>
                 <td>{{ event.backgroundColor }}</td>
                 <td>{{ event.borderColor }}</td>
                 <td>{{ event.textColor }}</td>
@@ -39,11 +37,11 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="10">no records found</td>
+                <td colspan="10">Pas de événement</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('event_new') }}">Create new</a>
+    <a href="{{ path('event_new') }}">Créer un nouveau événement</a>
 {% endblock %}

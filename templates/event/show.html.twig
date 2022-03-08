@@ -3,20 +3,20 @@
 {% block title %}Event{% endblock %}
 
 {% block body %}
-    <h1 class="uk-text-center uk-padding" >Event</h1>
+    <h1 class="uk-text-center uk-padding" >Événement</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Title</th>
+                <th>Titre</th>
                 <td>{{ event.title }}</td>
             </tr>
             <tr>
-                <th>Start</th>
+                <th>Début</th>
                 <td>{{ event.start ? event.start|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>End</th>
+                <th>Fin</th>
                 <td>{{ event.end ? event.end|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
@@ -24,27 +24,27 @@
                 <td>{{ event.description }}</td>
             </tr>
             <tr>
-                <th>All_day</th>
-                <td>{{ event.allDay ? 'Yes' : 'No' }}</td>
+                <th>Joiurnée complete</th>
+                <td>{{ event.allDay ? 'Oui' : 'Non' }}</td>
             </tr>
             <tr>
-                <th>Background_color</th>
+                <th>Couleur de fond</th>
                 <td>{{ event.backgroundColor }}</td>
             </tr>
             <tr>
-                <th>Border_color</th>
+                <th>Couleur de bords</th>
                 <td>{{ event.borderColor }}</td>
             </tr>
             <tr>
-                <th>Text_color</th>
+                <th>Couleur de texte</th>
                 <td>{{ event.textColor }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('event_index') }}">back to list</a>
+    <a href="{{ path('event_index') }}">Revenir à la liste des événement</a>
 
-    <a href="{{ path('event_edit', {'id': event.id}) }}">edit</a>
+    <a href="{{ path('event_edit', {'id': event.id}) }}">Modifier</a>
 
     {{ include('event/_delete_form.html.twig') }}
 {% endblock %}
