@@ -28,6 +28,7 @@ class ContactController extends AbstractController
             ['enable' => 'true'],
             ['lastname' => 'ASC']
         );
+
         return $this->render('contact/index.html.twig', [
             'contacts' => $contacts,
         ]);
@@ -36,10 +37,16 @@ class ContactController extends AbstractController
     /**
      * @Route("/new", name="contact_new", methods={"GET", "POST"})
      */
+
+
     public function new(Request $request,  ManagerRegistry $doctrine): Response
     {
         $entityManager = $doctrine->getManager();
         $contact = new Contact();
+        // connected in user
+        $user = $this->getUser();
+        $contact->setCreator($user);
+
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
 

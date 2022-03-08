@@ -87,7 +87,6 @@ class Contact
 
         $this->enable = true;
         $this->createdAt = new \DateTime();
-        $this->creator = app.user;
     }
 
     public function getId(): ?int
