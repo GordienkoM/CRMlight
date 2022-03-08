@@ -3,10 +3,10 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<div class="uk-flex uk-flex-column uk-flex-center"></div>
-    <h1 class=" uk-text-center">Connectez-vous</h1>
+<div class="uk-flex uk-flex-column uk-flex-center">
+    <h1 class=" uk-text-center uk-padding">Connectez-vous</h1>
     <div class="uk-container uk-container-small">
-        <form class=" uk-form-stacked uk-card uk-card-default uk-card-large uk-card-body" method="post">
+        <form class="uk-card uk-card-default uk-card-large uk-card-body" method="post">
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
@@ -22,13 +22,11 @@
             <label for="inputPassword" class="uk-margin-large">Password</label><br>
             <input type="password" name="password" id="inputPassword" class="uk-input uk-form-width-large" autocomplete="current-password" required><br>
 
-            <input type="hidden" name="_csrf_token"
-                value="{{ csrf_token('authenticate') }}"
-            >
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-            <button class="uk-button uk-button-primary uk-margin-large" type="submit">
-                Se connecter
-            </button>
+            <div class="uk-text-center uk-padding">
+                <button class="uk-button uk-button-secondary " type="submit">Se connecter</button>
+            </div>
         </form>
     </div>
 </div>

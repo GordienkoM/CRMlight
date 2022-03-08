@@ -3,42 +3,41 @@
 {% block title %}Company{% endblock %}
 
 {% block body %}
-    <h1>Company</h1>
+    <h1 class="uk-text-center uk-padding">Company</h1>
 
-    <table class="table">
+    <table class="uk-table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ company.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
+                <th>Nome d'entreprise</th>
                 <td>{{ company.name }}</td>
             </tr>
             <tr>
-                <th>Address</th>
+                <th>Adresse</th>
                 <td>{{ company.address }}</td>
             </tr>
             <tr>
-                <th>PostalCode</th>
+                <th>Code poctale</th>
                 <td>{{ company.postalCode }}</td>
             </tr>
             <tr>
-                <th>City</th>
+                <th>Ville</th>
                 <td>{{ company.city }}</td>
             </tr>
             <tr>
-                <th>Country</th>
+                <th>Pays</th>
                 <td>{{ company.country }}</td>
             </tr>
             <tr>
                 <th>Website</th>
                 <td>{{ company.website }}</td>
             </tr>
-            <tr>
-                <th>Enable</th>
-                <td>{{ company.enable ? 'Yes' : 'No' }}</td>
-            </tr>
+            {% if is_granted("ROLE_ADMIN") %}
+                <tr>
+                    <th>Achivé</th>
+                    <td>{{ company.enable ? 'Yes' : 'No' }}</td>
+                </tr>
+            {% endif %}	
+
         </tbody>
     </table>
 

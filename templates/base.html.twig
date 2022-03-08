@@ -29,7 +29,7 @@
             <img id="logo" src="{{ asset('assets/img/logo.png') }}" alt="logo">
         </a>
         <div class="uk-margin-left">
-            <div class="uk-text-large">CRM light</div>
+            <div id="crm" class="uk-text-large">CRM light</div>
         </div>
         <div class="uk-navbar-right">
             <ul class="uk-navbar-nav uk-visible@m">
@@ -118,7 +118,7 @@
     {% if messageSuccess %}
         <p>{{ messageSuccess }}</p>
     {% endif %}
-    <main class="uk-container uk-margin">
+    <main class="uk-container uk-container-large">
         {% block body %}{% endblock %}
     </main>
     <!-- fullcalendar.io -->

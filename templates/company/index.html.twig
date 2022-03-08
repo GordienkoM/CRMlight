@@ -3,17 +3,16 @@
 {% block title %}Company index{% endblock %}
 
 {% block body %}
-    <h1>Company index</h1>
+    <h1 class="uk-text-center uk-padding">Carnet de contact</h1>
 
-    <table class="table">
+    <table class="uk-table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>PostalCode</th>
-                <th>City</th>
-                <th>Country</th>
+                <th>Nom d'emtreprise</th>
+                <th>Adresse</th>
+                <th>Code postale</th>
+                <th>Ville</th>
+                <th>Pays</th>
                 <th>Website</th>
                 <th>Enable</th>
                 <th>actions</th>
@@ -22,7 +21,6 @@
         <tbody>
         {% for company in companies %}
             <tr>
-                <td>{{ company.id }}</td>
                 <td>{{ company.name }}</td>
                 <td>{{ company.address }}</td>
                 <td>{{ company.postalCode }}</td>

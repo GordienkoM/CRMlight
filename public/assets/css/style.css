@@ -25,8 +25,9 @@ body{
 
 
 main{
-	min-height: 85vh;
+	min-height: 80vh;
 	background-color:aliceblue;
+	margin-top: 1em;
 }
 
 
@@ -52,15 +53,22 @@ h3 {
     font-size: 20px;
 }
 
-/*-------------------------*/
-/* HEADER             
-/*-------------------------*/
-
 #nav{
-	background-color: rgb(36, 119, 139)
+	background-color: rgb(252, 252, 111);
 }
 
-.uk-navbar-nav li  a{
+.uk-navbar-nav li  a, #crm{
 	font-size: 20px;
-	color: var(--white);
+	color: var(--black-text);
+}
+
+#crm{
+	padding-top:20px;
+	font-size: 30px;
+	color:rgb(36, 119, 139);
+}
+
+#calendrier{
+	width: 86%;
+	margin: auto;
 }

@@ -14,7 +14,11 @@ class MainController extends AbstractController
      */
     public function index(ContactRepository $contactRepository): Response
     {
-        $contacts = $contactRepository->findLastContacts();
+        //redirect user non connected
+        $this->denyAccessUnlessGranted('ROLE_USER');
+        
+        // $contacts = $contactRepository->findLastContacts();
+        $contacts = $contactRepository->findAll();
         return $this->render('main/index.html.twig', [
             'contacts' => $contacts,
         ]);
