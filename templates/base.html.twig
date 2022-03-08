@@ -54,10 +54,15 @@
                     <div class="uk-navbar-dropdown">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
                             <li>
-                                <a href="{{ path('contact_index') }}">Voir</a>
+                                <a href="{{ path('contact_index') }}">Contacts</a>
                             </li>
                             <li>
-                                <a href="{{ path('contact_new') }}">Ajouter un contact</a>
+                                <a href="{{ path('contact_new') }}">Ajout de contact</a>
+                            </li>
+                                <a href="{{ path('company_index') }}">Entreprises</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('company_new') }}">Ajout d'entreprise</a>
                             </li>
                         </ul>
                     </div>
@@ -75,9 +80,9 @@
                     </li>
                 {% endif %}
                 {% if app.user %}
-                <li class="uk-navbar-item">
+                {# <li class="uk-navbar-item">
                     <a href="{{ path('main') }}" class="uk-link-heading uk-padding-small">{{ app.user.email }}</a>
-                </li>                					
+                </li>                					 #}
                 <li class="uk-navbar-item">
                     <a href="{{ path('app_logout') }}" class="uk-link-heading uk-padding-small">Déconnexion</a>
                 </li>
