@@ -68,6 +68,8 @@ class Company
     public function __construct()
     {
         $this->contacts = new ArrayCollection();
+
+        $this->enable = true;
     }
 
     public function getId(): ?int

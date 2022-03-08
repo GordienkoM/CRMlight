@@ -31,11 +31,11 @@ class CompanyType extends AbstractType
                 'attr' => ['class' => 'uk-input']
             ])
             ->add('country', TextType::class, [
-                'label_format' => 'Pay',
+                'label_format' => 'Pays',
                 'attr' => ['class' => 'uk-input']
             ])
             ->add('website', TextType::class, [
-                'label_format' => 'Nom de tableau',
+                'label_format' => 'Website',
                 'attr' => ['class' => 'uk-input']
             ])
             // ->add('enable')
