@@ -24,7 +24,7 @@ class CompanyController extends AbstractController
     {
         $companies = $companyRepository->findBy(
             ['enable' => 'true'],
-            ['lastname' => 'ASC']
+            ['name' => 'ASC']
         );
 
         return $this->render('company/index.html.twig', [

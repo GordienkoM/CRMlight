@@ -36,15 +36,19 @@
                 <li class="uk-navbar-item">
                     <a href="{{ path('main') }}">Dashboard</a>
                 </li>
+                {% if app.user %}
                 <li>
-                    <a href="">Evenements</a>
+                    <a href="{{ path('calendar') }}">Calendrier</a>
                     <div class="uk-navbar-dropdown">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
                             <li>
-                                <a href="{{ path('event_index') }}">Evenements</a>
+                                <a href="{{ path('calendar') }}">Calendrier</a>
                             </li>
                             <li>
-                                <a href="{{ path('event_new') }}">Ajouter un evenement</a>
+                                <a href="{{ path('event_index') }}">Evénements</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('event_new') }}">Ajouter un événement</a>
                             </li>
                         </ul>
                     </div>
@@ -66,7 +70,8 @@
                             </li>
                         </ul>
                     </div>
-                </li> 
+                </li>
+                {% endif %}	 
                 {% if is_granted("ROLE_ADMIN") %}
                     <li>
                         <a href="">Admin</a>
@@ -103,10 +108,10 @@
                     <a href="{{ path('main') }}">Accuil</a>
                 </li>
                 <li class="uk-navbar-item">
-                    <a href="{{ path('event_index') }}">Evenements</a>
+                    <a href="{{ path('event_index') }}">événements</a>
                 </li>
                 <li class="uk-navbar-item">
-                    <a href="{{ path('event_new') }}">Ajouter un evenement</a>
+                    <a href="{{ path('event_new') }}">Ajouter un événement</a>
                 </li>
                 <li class="uk-navbar-item">
                     <a href="{{ path('main') }}">Test</a>
