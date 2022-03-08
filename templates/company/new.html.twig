@@ -5,9 +5,10 @@
 {% block body %}
     <div class="uk-flex uk-flex-column uk-flex-center">
         <h1 class="uk-text-center uk-padding">Ajouter une entreprise</h1>
+        <div class="uk-container uk-container-small uk-padding">
+            {{ include('company/_form.html.twig') }}
 
-        {{ include('company/_form.html.twig') }}
-
-        <a href="{{ path('company_index') }}">Revenir à la liste des entreprises</a>
+            <a href="{{ path('company_index') }}">Revenir à la liste des entreprises</a>
+        </div>
     </div>
 {% endblock %}

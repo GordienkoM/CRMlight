@@ -40,10 +40,6 @@ class CompanyType extends AbstractType
             ])
             // ->add('enable')
             // ->add('creator')
-            ->add('submit', SubmitType::class, [
-                'label_format' => 'Ajouter',
-                'attr' => ['class' => 'uk-button uk-button-secondary']
-            ]);
         ;
     }
 

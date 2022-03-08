@@ -1,4 +1,6 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="uk-button uk-button-primary">{{ button_label|default('Ajouter un contact') }}</button>
+    <div class="uk-text-center uk-padding">
+        <button class="uk-button uk-button-secondary">{{ button_label|default('Ajouter un contact') }}</button>
+    </div>
 {{ form_end(form) }}

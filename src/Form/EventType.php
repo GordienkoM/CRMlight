@@ -27,10 +27,7 @@ class EventType extends AbstractType
         ->add('background_color', ColorType::class)
         ->add('border_color', ColorType::class)
         ->add('text_color', ColorType::class)
-        ->add('submit', SubmitType::class, [
-            'label_format' => 'Ajouter',
-            'attr' => ['class' => 'uk-button uk-button-secondary']
-        ]);
+
         ;
     }
 

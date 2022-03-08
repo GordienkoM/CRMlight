@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Company{% endblock %}
+{% block title %}Entreprise{% endblock %}
 
 {% block body %}
     <h1 class="uk-text-center uk-padding">Company</h1>
@@ -41,9 +41,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('company_index') }}">back to list</a>
+    <a href="{{ path('company_index') }}">Rzvenir à la liste des entreprises</a>
 
-    <a href="{{ path('company_edit', {'id': company.id}) }}">edit</a>
+    <a href="{{ path('company_edit', {'id': company.id}) }}">Modifier</a>
 
     {{ include('company/_delete_form.html.twig') }}
 {% endblock %}
