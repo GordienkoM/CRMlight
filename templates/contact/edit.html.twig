@@ -6,8 +6,12 @@
     <h1 class="uk-text-center uk-padding">Edition de contact</h1>
 
     {{ include('contact/_form.html.twig', {'button_label': 'Modifier'}) }}
-
-    <a href="{{ path('contact_index') }}">Revenir à la liste de contact</a>
-
-    {{ include('contact/_delete_form.html.twig') }}
+    <div class="uk-flex">
+        <div>
+            <a class="uk-button uk-button-default" href="{{ path('contact_index') }}">Revenir à la liste de contact</a>
+        </div>
+        <div>
+            {{ include('contact/_delete_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}

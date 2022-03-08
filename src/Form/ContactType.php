@@ -31,6 +31,10 @@ class ContactType extends AbstractType
                 'label_format' => 'Numero de téléphone',
                 'attr' => ['class' => 'uk-input']
             ])
+            ->add('submit', SubmitType::class, [
+                'label_format' => 'Ajouter',
+                'attr' => ['class' => 'uk-button uk-button-secondary']
+            ]);
 
         //     ->add('company')
         //     ->add('categories')

@@ -5,7 +5,7 @@
 {% block body %}
     <h1 class="uk-text-center uk-padding">Carnet de contact</h1>
 
-    <table class="table">
+    <table class="uk-table uk-margin">
         <thead>
             <tr>
                 <th>Prénom</th>
@@ -36,6 +36,7 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('contact_new') }}">Créer un contact</a>
+    <div class="uk-margin">
+        <a class="uk-button uk-button-default uk-text-center" href="{{ path('contact_new') }}">Créer un contact</a>
+    </div>
 {% endblock %}

@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ColorType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class EventType extends AbstractType
@@ -26,6 +27,10 @@ class EventType extends AbstractType
         ->add('background_color', ColorType::class)
         ->add('border_color', ColorType::class)
         ->add('text_color', ColorType::class)
+        ->add('submit', SubmitType::class, [
+            'label_format' => 'Ajouter',
+            'attr' => ['class' => 'uk-button uk-button-secondary']
+        ]);
         ;
     }
 
