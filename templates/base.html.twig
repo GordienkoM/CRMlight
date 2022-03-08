@@ -23,7 +23,7 @@
 </head>
 <body>
 
-    <nav class="uk-navbar-container uk-padding-small" uk-navbar>
+    <nav id="nav" class="uk-navbar-container uk-padding-small" uk-navbar>
 
         <a class="uk-navbar-item uk-logo uk-visible@s" href="{{ path('main') }}">
             <img id="logo" src="{{ asset('assets/img/logo.png') }}" alt="logo">
@@ -118,7 +118,7 @@
     {% if messageSuccess %}
         <p>{{ messageSuccess }}</p>
     {% endif %}
-    <main class="uk-container uk-container-xlarge">
+    <main class="uk-container uk-margin">
         {% block body %}{% endblock %}
     </main>
     <!-- fullcalendar.io -->

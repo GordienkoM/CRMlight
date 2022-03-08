@@ -15,23 +15,23 @@ class CompanyType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label_format' => 'Nom de tableau',
+                'label_format' => 'Nom de company',
                 'attr' => ['class' => 'uk-input']
             ])
             ->add('address', TextType::class, [
-                'label_format' => 'Nom de tableau',
+                'label_format' => 'Adresse',
                 'attr' => ['class' => 'uk-input']
             ])
             ->add('postalCode', TextType::class, [
-                'label_format' => 'Nom de tableau',
+                'label_format' => 'Code postale',
                 'attr' => ['class' => 'uk-input']
             ])
             ->add('city', TextType::class, [
-                'label_format' => 'Nom de tableau',
+                'label_format' => 'Ville',
                 'attr' => ['class' => 'uk-input']
             ])
             ->add('country', TextType::class, [
-                'label_format' => 'Nom de tableau',
+                'label_format' => 'Pay',
                 'attr' => ['class' => 'uk-input']
             ])
             ->add('website', TextType::class, [
@@ -40,10 +40,6 @@ class CompanyType extends AbstractType
             ])
             // ->add('enable')
             // ->add('creator')
-            ->add('submit', SubmitType::class, [
-                'label_format' => 'Ajouter',
-                'attr' => ['class' => 'uk-button uk-button-secondary uk-margin-top']
-            ]);
         ;
     }
 

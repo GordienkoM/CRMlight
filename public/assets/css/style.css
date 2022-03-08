@@ -5,7 +5,6 @@
 	--grey: #EEEEEE;
 	--ligth-grey: #F6F6F6;
 	--white: white;
-	--red: red;
 }
 
 
@@ -13,8 +12,7 @@ body{
     min-height: 100vh; /* 100 % de l'auteur*/
     font-size: 18px;
 	font-family: 'Open Sans', sans-serif;
-	/* background-color: var(--white); */
-	background: url("assets/img/background.jpg") center center;
+	background: url("../img/background.jpg") center center;
 }
 
 #links-nav{
@@ -22,14 +20,14 @@ body{
 }
 
 #nav-admin{
-	background-color: rgb(202, 203, 212)
+	background-color: rgb(241, 221, 104)
 }
 
 
-/* main{
-
-    background-color:rgb(244, 244, 248);
-} */
+main{
+	min-height: 85vh;
+	background-color:aliceblue;
+}
 
 
 
@@ -58,13 +56,11 @@ h3 {
 /* HEADER             
 /*-------------------------*/
 
-nav{
-	background-color: var(--white);
+#nav{
+	background-color: rgb(36, 119, 139)
 }
 
 .uk-navbar-nav li  a{
 	font-size: 20px;
-	color: var(--black-text);
+	color: var(--white);
 }
-
-

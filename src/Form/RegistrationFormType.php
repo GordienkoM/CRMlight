@@ -52,7 +52,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('submit', SubmitType::class, [
                 'label_format' => 'Ajouter',
-                'attr' => ['class' => 'uk-button uk-button-secondary uk-margin-top']
+                'attr' => ['class' => 'myButton uk-margin-top']
             ]);
         ;
     }
