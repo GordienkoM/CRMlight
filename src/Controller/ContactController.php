@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Contact;
 use App\Form\ContactType;
 use App\Repository\ContactRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,7 +23,7 @@ class ContactController extends AbstractController
      * 
      * @Route("/", name="contact_index", methods={"GET"})
      */ 
-    public function index(ContactRepository $contactRepository): Response
+    public function index(ContactRepository $contactRepository, CategoryRepository $categoryRepository): Response
     {
         $contacts = $contactRepository->findBy(
             ['enable' => 'true'],
@@ -31,8 +32,30 @@ class ContactController extends AbstractController
 
         return $this->render('contact/index.html.twig', [
             'contacts' => $contacts,
+            'categories' => $categoryRepository->findAll()
         ]);
     }
+
+
+    /**
+     * Show the contact book page
+     * 
+     * @Route("/category/{id}", name="contact_category", methods={"GET"})
+     */ 
+    public function contacts($id, ContactRepository $contactRepository, CategoryRepository $categoryRepository): Response
+    {
+        $contacts = $contactRepository->findBy(
+            ['enable' => 'true'],
+            ['lastname' => 'ASC'],
+            ['category' => $id],
+        );
+
+        return $this->render('contact/index.html.twig', [
+            'contacts' => $contacts,
+            'categories' => $categoryRepository->findAll()
+        ]);
+    }
+
 
     /**
      * @Route("/new", name="contact_new", methods={"GET", "POST"})

@@ -3,8 +3,19 @@
 {% block title %}Carnet de contact{% endblock %}
 
 {% block body %}
+
     <h1 class="uk-text-center uk-margin-top">Carnet de contact</h1>
 
+    <p uk-margin>
+    {% for category in categories %}
+        <button class="uk-button uk-button-default uk-button-large"href="{{ path('contact_index') }}">
+            Tous
+        </button>
+        <button class="uk-button uk-button-default uk-button-large"href="{{ path('contact_category', {'id': category.id}) }}">
+            {{ category.tite }}
+        </button>
+    {% endfor %}
+    </p>
     <table id="contactsTable" class="uk-table uk-margin">
         <thead>
             <tr>
