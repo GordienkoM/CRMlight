@@ -35,7 +35,7 @@ class ContactType extends AbstractType
             ->add('categories', EntityType::class, [
                 'label_format' => 'Catégorie',
                 'class'         => Category::class,
-                'choice_label'  => 'name',
+                'choice_label'  => 'title',
                 'attr'          => ['class' => 'uk-input'],
                 //permet d'afficher plusieurs categories dans un champ
                 'multiple'      => true,
