@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contact index{% endblock %}
+{% block title %}Carnet de contact{% endblock %}
 
 {% block body %}
     <h1 class="uk-text-center uk-padding">Carnet de contact</h1>
@@ -37,11 +37,11 @@
         </tbody>
     </table>
     <div class="uk-flex">
-        <div class="uk-margin">
-            <a class="uk-button uk-button-default uk-text-center" href="{{ path('contact_new') }}">Créer un contact</a>
+        <div class="uk-margin-right">
+            <a class="uk-button uk-button-default" href="{{ path('contact_new') }}">Créer un contact</a>
         </div>
-        <div class="uk-margin">
-            <a class="uk-button uk-button-default uk-text-center" href="{{ path('company_new') }}">Créer une entreprise</a>
+        <div>
+            <a class="uk-button uk-button-default" href="{{ path('company_new') }}">Créer une entreprise</a>
         </div>
     </div>
 {% endblock %}

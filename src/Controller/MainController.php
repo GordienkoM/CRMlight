@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\EventRepository;
 use App\Repository\ContactRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,10 +13,18 @@ class MainController extends AbstractController
     /**
      * @Route("/", name="main")
      */
-    public function index(ContactRepository $contactRepository): Response
+    public function index(ContactRepository $contactRepository, EventRepository $eventRepository ): Response
     {
         //redirect user non connected
         $this->denyAccessUnlessGranted('ROLE_USER');
+
+        $events = $eventRepository->createQueryBuilder('e')
+            ->where("e.date_end >= :time")
+            ->orWhere("e.date_start >= :time")
+            ->orderBy('e.date_start', 'ASC')
+            ->setParameter('time', new \Datetime())
+            ->getQuery()
+            ->execute();
         
         $contacts = $contactRepository->createQueryBuilder('c')
             ->orderBy('c.createdAt', 'DESC')
@@ -25,6 +34,7 @@ class MainController extends AbstractController
 
         // $contacts = $contactRepository->findAll();
         return $this->render('main/index.html.twig', [
+            'events' => $events,
             'contacts' => $contacts,
         ]);
     }
