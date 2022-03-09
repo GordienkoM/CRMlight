@@ -3,12 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Contact;
+use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class ContactType extends AbstractType
 {
@@ -31,9 +30,19 @@ class ContactType extends AbstractType
                 'label_format' => 'Numero de téléphone',
                 'attr' => ['class' => 'uk-input']
             ])
+            ->add('categories', EntityType::class, [
+                'label_format' => 'Catégorie',
+                'class'         => Category::class,
+                'choice_label'  => 'name',
+                'attr'          => ['class' => 'uk-input'],
+                //permet d'afficher plusieurs categories dans un champ
+                'multiple'      => true,
+                //pour selectioner plusier categorie pour le tableau
+                'expanded'      => true, 
+                // 'by_reference' => false,             
+                ])
 
         //     ->add('company')
-        //     ->add('categories')
         ;
     }
 
