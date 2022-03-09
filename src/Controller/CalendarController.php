@@ -14,7 +14,11 @@ class CalendarController extends AbstractController
      */
     public function index(EventRepository $event): Response
     {
-        $events = $event->findAll();
+        // connected in user
+        $user = $this->getUser();
+        $events = $event->findBy(
+            ['owner' => $user ],
+        );
 
         $rdvs = [];
 
