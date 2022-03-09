@@ -39,8 +39,18 @@ class ContactType extends AbstractType
                 'attr'          => ['class' => 'uk-input'],
                 //permet d'afficher plusieurs categories dans un champ
                 'multiple'      => true,
-                //pour selectioner plusier categorie pour le tableau
+                //pour selectioner plusier categorie pour le contact
                 'expanded'      => true, 
+                // 'by_reference' => false,             
+                ])
+            ->add('entreprises', EntityType::class, [
+                'label_format' => 'Catégorie',
+                'class'         => Company::class,
+                'choice_label'  => 'name',
+                'attr'          => ['class' => 'uk-input'],
+                //permet d'afficher plusieurs categories dans un champ
+                'multiple'      => true,
+                'expanded'      => false, 
                 // 'by_reference' => false,             
                 ])
 
