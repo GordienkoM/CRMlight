@@ -17,8 +17,13 @@ class MainController extends AbstractController
         //redirect user non connected
         $this->denyAccessUnlessGranted('ROLE_USER');
         
-        // $contacts = $contactRepository->findLastContacts();
-        $contacts = $contactRepository->findAll();
+        $contacts = $contactRepository->createQueryBuilder('c')
+            ->orderBy('c.created_at', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->execute();
+            
+        // $contacts = $contactRepository->findAll();
         return $this->render('main/index.html.twig', [
             'contacts' => $contacts,
         ]);

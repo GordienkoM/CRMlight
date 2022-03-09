@@ -4,4 +4,56 @@
 
 {% block body %}
 
+    <div class="uk-flex uk-flex-center">
+        <div class="uk-margin">
+            <a class="uk-button uk-button-text" href="{{ path('contact_new') }}">Créer un contact</a>
+        </div>
+        <div class="uk-margin">
+            <a class="uk-button uk-button-text" href="{{ path('company_new') }}">Créer une entreprise</a>
+        </div>
+    </div>
+
+    <h1 class="uk-text-center uk-padding">Carnet de contact</h1>
+
+    <h2 class="uk-text-center">Cotacts recement ajoutés</h2>
+
+    <table class="uk-table uk-margin">
+        <thead>
+            <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Numero de téléphone</th>
+                <th>La date de création</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.firstname }}</td>
+                <td>{{ contact.lastname }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.phoneNumber }}</td>
+                <td>{{ contact.createdAt ? contact.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('contact_show', {'id': contact.id}) }}">Voir</a>
+                    <a href="{{ path('contact_edit', {'id': contact.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Le cornet de contact est vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="uk-flex">
+        <div class="uk-margin">
+            <a class="uk-button uk-button-default uk-text-center" href="{{ path('contact_new') }}">Créer un contact</a>
+        </div>
+        <div class="uk-margin">
+            <a class="uk-button uk-button-default uk-text-center" href="{{ path('company_new') }}">Créer une entreprise</a>
+        </div>
+    </div>
 {% endblock %}
