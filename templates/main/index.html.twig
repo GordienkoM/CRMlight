@@ -37,7 +37,7 @@
                 <td>{{ contact.phoneNumber }}</td>
                 <td>{{ contact.createdAt ? contact.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                {% if contact.creator.contact.firstname %}
+                {% if contact.creator.contact.firstname is defined %}
 					{{ contact.creator.contact.firstname }} {{ contact.creator.contact.lastname }} 
 				{% else %}
 					{{ contact.creator.email }}			
