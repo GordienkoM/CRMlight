@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contacts{% endblock %}
+{% block title %}Utilisateurs{% endblock %}
 
 {% block body %}
 	{# Insertion de navigation d'administration #}
 	{% embed "admin/index.html.twig" %}{% endembed %}
-    <h1>Carnet de contact</h1>
+    <h1>Liste des utilisateurs</h1>
 
     <table id="usersTable"class='uk-table'>
         <thead>
@@ -15,7 +15,6 @@
                 <th>Email de contact</th>
                 <th>Numero de téléphone</th>
                 <th>Archivé</th>
-                <th>La date de création</th>
             </tr>
         </thead>
         <tbody>
@@ -29,11 +28,12 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">Le cornet de contact est vide</td>
+                <td colspan="5">Le cornet de contact est vide</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('contact_new') }}">Créer un contact</a>
+    <div class="uk-text-center uk-padding">
+        <a class="uk-button uk-button-default" href="{{ path('contact_new') }}">Créer un contact</a>
+    </div>
 {% endblock %}
