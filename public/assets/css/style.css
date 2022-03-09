@@ -1,7 +1,7 @@
 :root {
 	--black-text: #000000;
 	--black: #222222;
-	--dark-grey: #818181;
+	--brown: rgb(165, 64, 25);
 	--grey: #EEEEEE;
 	--ligth-grey: #F6F6F6;
 	--white: white;
@@ -45,8 +45,13 @@ h1, h2, h3{
 	text-align:center;
 }
 
-h1, h2 {
+h1 {
 	font-size: 32px;
+	color: var(--brown);
+}
+
+h2 {
+	font-size: 28px;
 }
 
 h3 {
