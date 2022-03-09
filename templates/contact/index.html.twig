@@ -12,6 +12,7 @@
                 <th>Nom</th>
                 <th>Email</th>
                 <th>Numero de téléphone</th>
+                <th>Catégorie</th>
                 <th>Date de création</th>
                 <th>Actions</th>
             </tr>
@@ -23,6 +24,13 @@
                 <td>{{ contact.lastname }}</td>
                 <td>{{ contact.email }}</td>
                 <td>{{ contact.phoneNumber }}</td>
+                <td>
+                    <ul class="uk-list">
+                        {% for category in contact.categories  %}          
+                            <li> {{ category.title }} </li>
+                        {% endfor %}
+                    </ul>	
+                </td>
                 <td>{{ contact.createdAt ? contact.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('contact_show', {'id': contact.id}) }}">Voir</a>
