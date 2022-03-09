@@ -8,14 +8,14 @@
 
     <p uk-margin>
     
-        <button class="uk-button uk-button-default uk-button-large" href="{{ path('contact_index') }}">
+        <a class="uk-button uk-button-default uk-button-large" href="{{ path('contact_index') }}">
             Tous
-        </button>
+        </a>
 
         {% for category in categories %}
-            <button class="uk-button uk-button-default uk-button-large" href="{{ path('contact_category', {'id': category.id}) }}">
+            <a class="uk-button uk-button-default uk-button-large" href="{{ path('contact_category', {'id': category.id}) }}">
                 {{ category.title }}
-            </button>
+            </a>
         {% endfor %}
     </p>
     <table id="contactsTable" class="uk-table uk-margin">
