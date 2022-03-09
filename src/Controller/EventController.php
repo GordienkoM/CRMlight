@@ -33,6 +33,7 @@ class EventController extends AbstractController
     {
         $entityManager = $doctrine->getManager();
         $event = new Event();
+        
         // connected in user
         $user = $this->getUser();
         $event->setOwner($user);
