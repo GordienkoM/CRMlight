@@ -35,7 +35,6 @@ class EventController extends AbstractController
         $event = new Event();
         // connected in user
         $user = $this->getUser();
-        dump($user);
         $event->setOwner($user);
 
         $form = $this->createForm(EventType::class, $event);
