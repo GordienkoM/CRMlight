@@ -7,7 +7,7 @@
 	{% embed "admin/index.html.twig" %}{% endembed %}
     <h1>Carnet de contact</h1>
 
-    <table class='uk-table uk-table-hover uk-table-divider'>
+    <table id="usersTable"class='uk-table'>
         <thead>
             <tr>
                 <th>Nom</th>
@@ -22,11 +22,11 @@
         <tbody>
         {% for user in users %}
             <tr>
-                <td>{{ user.contact.lastname }} {{ user.contact.firstname }}</td>
+                <td>{% if user.contact %}{{ user.contact.lastname }} {{ user.contact.firstname }}{% endif %}</td>
                 <td>{{ user.email }}</td>
-                <td>{{ user.contact.email }}</td>
-                <td>{{ user.contact.phoneNumber }}</td>
-                <td>{{ user.contact.enable ? 'Yes' : 'No' }}</td>
+                <td>{% if user.contact %} {{ user.contact.email }} {% endif %}</td>
+                <td>{% if user.contact %} {{ user.contact.phoneNumber }} {% endif %}</td>
+                <td>{% if user.contact %} {{ user.contact.enable ? 'Yes' : 'No' }} {% endif %}</td>
                 <td>
                     <a class="uk-icon-link uk-margin-small-right" uk-icon="file-edit" href="{{ path('user_edit', {'id': user.id}) }}"></a> 
 					<a class="uk-icon-link" uk-icon="trash" href="{{ path('user_edit', {'id': user.id}) }}"></a>
