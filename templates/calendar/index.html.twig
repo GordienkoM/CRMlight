@@ -22,11 +22,14 @@
                 center: 'title',
                 end: 'dayGridMonth,timeGridWeek,timeGridDay'
             },
+            //events data
             events: {{ data|raw }},
+            //move
             editable: true,
             eventResizableFromStart: true
         })
 
+        //when event move
         calendar.on('eventChange', (e) => {
             let url = `/api/${e.event.id}/edit`
             let donnees = {
