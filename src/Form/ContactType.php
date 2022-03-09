@@ -49,8 +49,7 @@ class ContactType extends AbstractType
                 'class'         => Company::class,
                 'choice_label'  => 'name',
                 'attr'          => ['class' => 'uk-input'],
-                //permet d'afficher plusieurs categories dans un champ
-                'multiple'      => true,
+                'multiple'      => false,
                 'expanded'      => false, 
                 // 'by_reference' => false,             
                 ])
