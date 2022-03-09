@@ -21,8 +21,12 @@ class EventController extends AbstractController
      */
     public function index(EventRepository $eventRepository): Response
     {
+        // connected in user
+        $user = $this->getUser();
         return $this->render('event/index.html.twig', [
-            'events' => $eventRepository->findAll(),
+            'events' => $eventRepository->findBy(
+                ['owner' => $user ]
+            )
         ]);
     }
 
@@ -33,7 +37,7 @@ class EventController extends AbstractController
     {
         $entityManager = $doctrine->getManager();
         $event = new Event();
-        
+
         // connected in user
         $user = $this->getUser();
         $event->setOwner($user);

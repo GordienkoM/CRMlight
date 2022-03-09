@@ -12,12 +12,12 @@ class CalendarController extends AbstractController
     /**
      * @Route("/calendar", name="calendar")
      */
-    public function index(EventRepository $event): Response
+    public function index(EventRepository $eventRepository): Response
     {
         // connected in user
         $user = $this->getUser();
-        $events = $event->findBy(
-            ['owner' => $user ],
+        $events = $eventRepository->findBy(
+            ['owner' => $user ]
         );
 
         $rdvs = [];
