@@ -76,11 +76,26 @@
                 {% endif %}	 
                 {% if is_granted("ROLE_ADMIN") %}
                     <li>
-                        <a href="">Admin</a>
+                        <a href="admin_users">Admin</a>
                         <div class="uk-navbar-dropdown">
                             <ul class="uk-nav uk-navbar-dropdown-nav">
                                 <li>
                                    <a href="{{ path('app_register') }}" class="uk-link-heading uk-padding-small">Ajout de collaborateur</a>
+                                </li>
+                                <li>
+                                   <a href="{{ path('admin_contacts') }}" class="uk-link-heading uk-padding-small">Utilisateurs</a>
+                                </li>
+                                <li>
+                                   <a href="{{ path('admin_contacts') }}" class="uk-link-heading uk-padding-small">Contacts</a>
+                                </li>
+                                <li>
+                                   <a href="{{ path('category_index') }}" class="uk-link-heading uk-padding-small">Catégories de contact</a>
+                                </li>
+                                <li>
+                                   <a href="{{ path('event_index') }}" class="uk-link-heading uk-padding-small">Evenements</a>
+                                </li>
+                                <li>
+                                   <a href="{{ path('admin_types') }}" class="uk-link-heading uk-padding-small">Types des evenemments</a>
                                 </li>
                             </ul>
                         </div>
@@ -106,21 +121,45 @@
     <div id="sidenav" uk-offcanvas="flip: true" class="uk-offcanvas">
         <div class="uk-offcanvas-bar">
             <ul class="uk-nav">
+
                 <li class="uk-navbar-item">
-                    <a href="{{ path('main') }}">Accuil</a>
+                    <a href="{{ path('calendar') }}">Calendrier</a>
                 </li>
                 <li class="uk-navbar-item">
-                    <a href="{{ path('event_index') }}">événements</a>
+                    <a href="{{ path('event_index') }}">Evénements</a>
                 </li>
                 <li class="uk-navbar-item">
                     <a href="{{ path('event_new') }}">Ajouter un événement</a>
                 </li>
                 <li class="uk-navbar-item">
-                    <a href="{{ path('main') }}">Test</a>
+                    <a href="{{ path('contact_index') }}">Contacts</a>
                 </li>
                 <li class="uk-navbar-item">
-                    <a href="{{ path('main') }}">Test</a>
+                    <a href="{{ path('contact_new') }}">Ajout de contact</a>
                 </li>
+                <li class="uk-navbar-item">
+                    <a href="{{ path('company_index') }}">Entreprises</a>
+                </li>
+                <li class="uk-navbar-item">
+                    <a href="{{ path('company_new') }}">Ajout d'entreprise</a>
+                </li>
+                {% if is_granted("ROLE_ADMIN") %}
+                    <li class="uk-navbar-item">
+                        <a href="{{ path('admin_contacts') }}">Admin</a>
+                    </li>
+                {% endif %}
+
+                {% if app.user %}
+              					 
+                    <li class="uk-navbar-item">
+                        <a href="{{ path('app_logout') }}" >Déconnexion</a>
+                    </li>
+                
+                {% else %}
+                    <li class="uk-navbar-item">
+                         <a href="{{ path('app_login') }}" >Connexion</a>
+                    </li>           
+                {% endif %}	
             </ul>
         </div>
     </div>
