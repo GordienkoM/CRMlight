@@ -5,8 +5,8 @@
 {% block body %}
 
     <div class="uk-flex uk-flex-column uk-flex-center">
-        <h1 class="uk-text-center">Creer un événement</h1>
-        <div class="uk-card uk-card-default uk-card-body">
+        <h1 class="uk-text-center uk-padding">Creer un événement</h1>
+        <div class="uk-card uk-card-default uk-card-small uk-card-body">
             {{ include('event/_form.html.twig') }}
             <div class="uk-text-center uk-padding">
                 <a class="uk-button uk-button-default" href="{{ path('event_index') }}">Revenir à la liste des événements</a>
