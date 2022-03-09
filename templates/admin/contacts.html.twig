@@ -10,6 +10,7 @@
     <table class='uk-table uk-table-hover uk-table-divider'>
         <thead>
             <tr>
+                <th>Prénom</th>
                 <th>Nom</th>
                 <th>Email</th>
                 <th>Numero de téléphone</th>
@@ -21,14 +22,15 @@
         <tbody>
         {% for contact in contacts %}
             <tr>
-                <td><a href="{{ path('contact_show', {'id': contact.id}) }}">{{ contact.lastname }} {{ contact.firstname }} </a></td>
+                <td>{{ contact.firstname }}</td>
+                <td>{{ contact.lastname }}</td>
                 <td>{{ contact.email }}</td>
                 <td>{{ contact.phoneNumber }}</td>
                 <td>{{ contact.enable ? 'Yes' : 'No' }}</td>
                 <td>{{ contact.createdAt ? contact.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('contact_show', {'id': contact.id}) }}">show</a>
-                    <a href="{{ path('contact_edit', {'id': contact.id}) }}">edit</a>
+                    <a href="{{ path('contact_show', {'id': contact.id}) }}">Voir</a>
+                    <a href="{{ path('contact_edit', {'id': contact.id}) }}">Editer</a>
                 </td>
             </tr>
         {% else %}
