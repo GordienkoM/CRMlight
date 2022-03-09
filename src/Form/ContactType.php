@@ -44,8 +44,8 @@ class ContactType extends AbstractType
                 'expanded'      => true, 
                 // 'by_reference' => false,             
                 ])
-            ->add('entreprises', EntityType::class, [
-                'label_format' => 'Catégorie',
+            ->add('companies', EntityType::class, [
+                'label_format' => 'Entreprise',
                 'class'         => Company::class,
                 'choice_label'  => 'name',
                 'attr'          => ['class' => 'uk-input'],
