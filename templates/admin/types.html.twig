@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste de type des événements{% endblock %}
+
+{% block body %}
+    <h1>Liste de type des événements</h1>
+
+    <table class="uk-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom de category</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type in types %}
+            <tr>
+                <td>{{ type.id }}</td>
+                <td>{{ type.name }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">Il n'y a pas de types dans la base de données</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

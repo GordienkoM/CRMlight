@@ -16,11 +16,13 @@ body{
 }
 
 #links-nav{
-	background-color: rgb(243, 240, 240)
+	background-color: rgb(243, 240, 240);
+	font-size: 18px;
+	font-family: 'Open Sans', sans-serif;
 }
 
 #nav-admin{
-	background-color: rgb(241, 221, 104)
+	background-color: rgb(173, 212, 245)
 }
 
 

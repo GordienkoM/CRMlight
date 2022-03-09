@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\UserRepository;
 use App\Repository\ContactRepository;
+use App\Repository\EventTypeRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,6 +31,16 @@ class AdminController extends AbstractController
     {
         return $this->render('admin/contacts.html.twig', [
             'contacts' => $contactRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/type", name="admin_types", methods={"GET"})
+     */
+    public function types(EventTypeRepository $typeRepository): Response
+    {
+        return $this->render('type/index.html.twig', [
+            'types' => $typeRepository->findAll(),
         ]);
     }
 }
