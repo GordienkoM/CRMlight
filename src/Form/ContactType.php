@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Company;
 use App\Entity\Contact;
 use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
