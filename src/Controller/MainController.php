@@ -17,14 +17,6 @@ class MainController extends AbstractController
     {
         //redirect user non connected
         $this->denyAccessUnlessGranted('ROLE_USER');
-
-        $events = $eventRepository->createQueryBuilder('e')
-            ->where("e.end >= :time")
-            ->orWhere("e.start >= :time")
-            ->orderBy('e.start', 'ASC')
-            ->setParameter('time', new \Datetime())
-            ->getQuery()
-            ->execute();
         
         $contacts = $contactRepository->createQueryBuilder('c')
             ->orderBy('c.createdAt', 'DESC')
@@ -34,7 +26,6 @@ class MainController extends AbstractController
 
         // $contacts = $contactRepository->findAll();
         return $this->render('main/index.html.twig', [
-            'events' => $events,
             'contacts' => $contacts,
         ]);
     }
