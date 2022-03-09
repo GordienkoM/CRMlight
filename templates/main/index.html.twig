@@ -24,6 +24,7 @@
                 <th>Email</th>
                 <th>Numero de téléphone</th>
                 <th>Date de création</th>
+                <th>Ajouté par</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -35,6 +36,7 @@
                 <td>{{ contact.email }}</td>
                 <td>{{ contact.phoneNumber }}</td>
                 <td>{{ contact.createdAt ? contact.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ contact.creator.contact.firstname }} {{ contact.creator.contact.lastname }}</td>
                 <td>
                     <a href="{{ path('contact_show', {'id': contact.id}) }}">Voir</a>
                     <a href="{{ path('contact_edit', {'id': contact.id}) }}">Modifier</a>
