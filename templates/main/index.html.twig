@@ -47,4 +47,33 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <h1 class="uk-text-center uk-padding">Liste des événement en cours</h1>
+
+    <table class="uk-table">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Début</th>
+                <th>Fin</th>               
+                <th>Joiurnée complete</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for event in events %}
+            <tr>
+                <td>{{ event.title }}</td>
+                <td>{{ event.start ? event.start|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ event.end ? event.end|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ event.allDay ? 'Oui' : 'Non' }}</td>
+                <td>{{ event.description }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">Pas de événement</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

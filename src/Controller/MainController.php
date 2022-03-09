@@ -19,9 +19,9 @@ class MainController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_USER');
 
         $events = $eventRepository->createQueryBuilder('e')
-            ->where("e.date_end >= :time")
-            ->orWhere("e.date_start >= :time")
-            ->orderBy('e.date_start', 'ASC')
+            ->where("e.end >= :time")
+            ->orWhere("e.start >= :time")
+            ->orderBy('e.start', 'ASC')
             ->setParameter('time', new \Datetime())
             ->getQuery()
             ->execute();
