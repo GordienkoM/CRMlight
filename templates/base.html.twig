@@ -35,10 +35,10 @@
         </div>
         <div class="uk-navbar-right">
             <ul class="uk-navbar-nav uk-visible@m">
+                {% if app.user %}
                 <li class="uk-navbar-item">
                     <a href="{{ path('main') }}">Dashboard</a>
                 </li>
-                {% if app.user %}
                 <li>
                     <a href="{{ path('calendar') }}">Calendrier</a>
                     <div class="uk-navbar-dropdown">
@@ -121,7 +121,7 @@
     <div id="sidenav" uk-offcanvas="flip: true" class="uk-offcanvas">
         <div class="uk-offcanvas-bar">
             <ul class="uk-nav">
-
+            {% if app.user %}
                 <li class="uk-navbar-item">
                     <a href="{{ path('calendar') }}">Calendrier</a>
                 </li>
@@ -143,23 +143,24 @@
                 <li class="uk-navbar-item">
                     <a href="{{ path('company_new') }}">Ajout d'entreprise</a>
                 </li>
-                {% if is_granted("ROLE_ADMIN") %}
-                    <li class="uk-navbar-item">
-                        <a href="{{ path('admin_contacts') }}">Admin</a>
-                    </li>
-                {% endif %}
+            {% endif %}
+            {% if is_granted("ROLE_ADMIN") %}
+                <li class="uk-navbar-item">
+                    <a href="{{ path('admin_contacts') }}">Admin</a>
+                </li>
+            {% endif %}
 
-                {% if app.user %}
-              					 
-                    <li class="uk-navbar-item">
-                        <a href="{{ path('app_logout') }}" >Déconnexion</a>
-                    </li>
-                
-                {% else %}
-                    <li class="uk-navbar-item">
-                         <a href="{{ path('app_login') }}" >Connexion</a>
-                    </li>           
-                {% endif %}	
+            {% if app.user %}
+                                
+                <li class="uk-navbar-item">
+                    <a href="{{ path('app_logout') }}" >Déconnexion</a>
+                </li>
+            
+            {% else %}
+                <li class="uk-navbar-item">
+                        <a href="{{ path('app_login') }}" >Connexion</a>
+                </li>           
+            {% endif %}	
             </ul>
         </div>
     </div>
