@@ -26,7 +26,7 @@
                 <td>{{ contact.lastname }}</td>
                 <td>{{ contact.email }}</td>
                 <td>{{ contact.phoneNumber }}</td>
-                <td>{{ contact.enable ? 'Yes' : 'No' }}</td>
+                <td>{{ contact.enable ? 'Non' : 'Oui' }}</td>
                 <td>{{ contact.createdAt ? contact.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('contact_show', {'id': contact.id}) }}">Voir</a>
