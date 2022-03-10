@@ -42,13 +42,29 @@ class ContactController extends AbstractController
      * 
      * @Route("/category/{id}", name="contact_category", methods={"GET"})
      */ 
-    public function contacts($id, ContactRepository $contactRepository, CategoryRepository $categoryRepository): Response
+    public function contacts($id, ContactRepository $contactRepository, CategoryRepository $categoryRepository, ManagerRegistry $doctrine): Response
     {
-        $contacts = $contactRepository->findBy(
-            ['enable' => 'true'],
-            ['lastname' => 'ASC'],
-            ['category' => $id],
-        );
+        $entityManager = $doctrine->getManager();
+       
+        $contacts = [];
+        $contactIds = $entityManager->getConnection()->fetchAllAssociative(     
+            'SELECT c.id FROM contact c 
+            INNER JOIN contact_category cc ON c.id=cc.contact_id
+            INNER JOIN category cat ON cat.id=cc.category_id
+            WHERE cc.category_id=:id',
+            ['id' => $id] 
+        );  
+        foreach ($contactIds as $contactId) {
+            $contact = $contactRepository->findOneBy(['id'=>$contactId]);
+            array_push($contacts, $contact);
+        } 
+
+
+        // $contacts = $contactRepository->findBy(
+        //     ['enable' => 'true'],
+        //     ['lastname' => 'ASC'],
+        //     ['category' => $id],
+        // );
 
         return $this->render('contact/index.html.twig', [
             'contacts' => $contacts,

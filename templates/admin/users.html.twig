@@ -7,7 +7,7 @@
 	{% embed "admin/index.html.twig" %}{% endembed %}
     <h1>Liste des utilisateurs</h1>
 
-    <table id="usersTable"class='uk-table'>
+    <table id="usersTable" class='uk-table'>
         <thead>
             <tr>
                 <th>Nom</th>
@@ -24,7 +24,7 @@
                 <td>{{ user.email }}</td>
                 <td>{% if user.contact %} {{ user.contact.email }} {% endif %}</td>
                 <td>{% if user.contact %} {{ user.contact.phoneNumber }} {% endif %}</td>
-                <td>{% if user.contact %} {{ user.contact.enable ? 'Yes' : 'No' }} {% endif %}</td>
+                <td>{% if user.contact %} {{ user.contact.enable ? 'Non' : 'Oui' }} {% endif %}</td>
             </tr>
         {% else %}
             <tr>
